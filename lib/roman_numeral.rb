@@ -1,5 +1,5 @@
 class RomanNumeral
-  def to_roman(num)
+  def to_roman(num, numeral_string = "")
     numeral_hash = {
       1000 => "M",
       900 => "CM",
@@ -16,17 +16,17 @@ class RomanNumeral
       1 => "I"
     }
 
-    numeral_string = ""
-
-    until num == 0
-      num_to_subtract = numeral_hash.select do |k,v|
-        k <= num
-      end.max
-
-      num -= num_to_subtract.first
-      numeral_string.insert(-1, num_to_subtract.last)
+    if num == 0
+      return numeral_string
     end
 
-    numeral_string
+    num_to_subtract = numeral_hash.select do |k,v|
+      k <= num
+    end.max
+
+    num -= num_to_subtract.first
+    numeral_string.insert(-1, num_to_subtract.last)
+
+    to_roman(num, numeral_string)
   end
 end
