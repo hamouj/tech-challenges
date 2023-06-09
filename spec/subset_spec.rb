@@ -9,7 +9,7 @@ require './lib/subset'
 
 # Pseudocode:
 # 1: Find all combinations (combinations method)
-
+# ------------------------------------------------
 # Recursion:
 # Base case => if array is empty, return combos
 # Recursive case => add array to combos
@@ -20,7 +20,7 @@ require './lib/subset'
 #   3a: Combine num & element to make an array
 #   3b: Add array to combos
 # 4: Call method recursively (outside of iteration), with num and combos as arguments
-
+# -----------------------------------------------------------------------------------
 
 describe Subset do
   let(:subset) { Subset.new }
@@ -32,4 +32,21 @@ describe Subset do
       expect(subset.find_combinations([])).to eq([])
     end
   end
+
+  describe 'find_all_combinations()' do
+    it 'returns all combinations' do
+      expect(subset.find_all_combinations([1, 2, 3, 4])).to eq([[],[1],[2],[3],[4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4],[1,2,3],[1,2,4],[1,3,4],[2,3,4],[1,2,3,4]])
+    end
+  end
 end
+
+# Find all combinations (extension)
+# 
+# Things to note:
+# - subset arrays can be 0 to n in length
+#
+# Pseudocode
+# 1: Create variable (combos) equal to [[]], counter = 1
+# 2: Call combinations with argument (counter) and push return into combos
+# 3: Call method recursively with arguments (array, counter += 1)
+# Base case => counter > array's length, return combos
