@@ -10,6 +10,18 @@ require './lib/subset'
 # Pseudocode:
 # 1: Find all combinations (combinations method)
 
+# Recursion:
+# Base case => if array is empty, return combos
+# Recursive case => add array to combos
+
+# 1: Set variable (num) = nil & variable (combos) = []
+# 2: Shift first element and set equal to num
+# 3: Iterate through rest of array
+#   3a: Combine num & element to make an array
+#   3b: Add array to combos
+# 4: Call method recursively (outside of iteration), with num and combos as arguments
+
+
 describe Subset do
   let(:subset) { Subset.new }
 
